@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+{% block main %}
+ShopShop-
+{% endblock %}
+
+{% block title %} {{parent()}} Accueil {% endblock %}
+
+{% block contenu %}
+<form>
+	 <div class="form-row">
+	<div class="form-group col-md-6">
+      <label for="Nom">Nom</label>
+      <input type="name" class="form-control" id="Nom" placeholder="Dujardin"required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Prénom">Prénom</label>
+      <input type="prenom" class="form-control" id="prenom" placeholder="Alfred"required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="Email" placeholder="xxx@xxx.xx"required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Mot de passe</label>
+      <input type="password" class="form-control" id="mdp"required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Adresse</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="01 rue de ..."required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputVille">Ville</label>
+      <input type="text" class="form-control" id="inputVille"required>
+    </div>
+    <div class="form-group col-md-5">
+      <label for="inputcode">Code Postal</label>
+      <input type="text" class="form-control" id="inputCode"required>
+    </div>
+     <div class="form-group col-md-5">
+      <label for="ddN">Date de Naissance</label>
+      <input type="date" class="form-control" id="ddN"required>
+    </div>
+    <div class="form-group col-md-5">
+      <label for="tel">Numero de téléphone</label>
+      <input type="text" class="form-control" id="tel" placeholder="01 23 45 56 78 89" required>
+    </div>
+    
+  </div>
+  <button type="submit" class="btn btn-primary">S'enregistrer</button>
+</form>
+{% endblock %}
