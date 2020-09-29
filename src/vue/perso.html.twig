@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}} Personnage {% endblock %}
+
+{% block contenu %}
+<style>
+    body{
+        background:url(fondnaruto.png);
+        color:white;       
+
+    }
+    </style>
+
+<style>
+    form{
+        padding-top:20px;
+    }
+</style>
+
+        <center>
+            <form class="col-5" method="post" action="index.php?page=perso"> 
+        
+                <div class="form-group">
+                    <label for="nomperso">Nom du personnage</label>
+                    <input type="nomperso" class="form-control" name="nomperso" >
+                </div>
+
+                 <div class="form-group">
+                    <label for="idanime">Anime</label>
+                    <select type="idanime" id="idanime" class="form-control" name="idanime">
+                    {% for a in liste %}
+                    <option >{{a.id}}-{{a.nomanime}} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary mx-auto" name="btPerso">Valider</button>
+            </form>
+            
+        </center>
+    
+     
+{% endblock %}

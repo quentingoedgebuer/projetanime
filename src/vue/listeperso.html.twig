@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}}liste personnage{% endblock %}
+
+
+
+{% block contenu %}
+<style>
+    body{
+        background:url(kna.png);
+    }
+    tr{
+        color:black;
+        font-size:bold;
+    }
+
+</style>
+
+ <div class="table-responsive">
+ <table class="table">
+ <thead>
+ <tr>
+ <th scope="col">Id</th>
+ <th scope="col">Nom du Personnage</th>
+ <th scope="col">Nom de l'anime</th>
+ </tr>
+ </thead>
+ <tbody>
+ {% for p in liste %}
+
+<tr><td>{{p.id}}</td><td>{{p.nomperso}}</td><td>{{p.nomanime}}</td></tr>
+ {% endfor %}
+ </tbody>
+ </table>
+ </div>
+{% endblock %}

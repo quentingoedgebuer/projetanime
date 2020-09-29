@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}} Connexion {% endblock %}
+
+{% block contenu %}
+
+<style>
+    body{
+        background:url(izuku.png);
+        color:white;       
+
+    }
+    form{
+        padding-top:30px;
+    }
+</style>
+
+<center>
+            <form class="col-5" method="post" action="index.php?page=genre"> 
+        
+                <div class="form-group">
+                    <label for="libelle">Genre</label>
+                    <input type="text" class="form-control" name="libelle" >
+                </div>
+
+                <button type="submit" class="btn btn-primary mx-auto" name="btGenre">Valider</button>
+            </form>
+            
+        </center>
+
+
+
+
+{% endblock %}

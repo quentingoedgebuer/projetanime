@@ -1,5 +1,35 @@
 <?php
-function connexionControleur($twig){
-		echo $twig -> render('connexion.html.twig',array());
+function connexionControleur($twig,$db){
+	$form = array();
+
+	if(isset($_POST['btConnecter'])){
+		$form['Valide'] = true;
+		$inputEmail = $_POST['inputEmail'];
+		$inputPseudo = $_POST['inputPseudo'];
+		$inputPassword = $_POST['inputPassword'];
+
+		$utilisateur = new Utilisateur($db);
+		$unUtilisateur = $utilisateur->connect($inputEmail);
+
+		if($unUtilisateur!=null){
+			if(!password_verify($inputPassword,$unUtilisateur['mdp'])){
+				$form['Valide'] = false;
+				$form['message'] = 'Login ou mot de passe incorrect';
+			}
+			else{
+				$_SESSION['login'] = $inputPseudo;
+				$_SESSION['role'] = $unUtilisateur['idRole'];
+				header("Location:index.php");
+				
+			}
+		}
+		else{
+			$form['Valide'] = false;
+			$form['message'] = 'Login ou mot de passe incorrect';
+		}
+	}
+		echo $twig -> render('connexion.html.twig',array('form'=>$form));
+		
+		
 	}	
 ?>

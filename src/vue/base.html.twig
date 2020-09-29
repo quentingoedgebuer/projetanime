@@ -3,41 +3,122 @@
 <head>    
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
-<!-- Bootstrap CSS --><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<title>SHOP-SHOP</title>  
+<!-- Bootstrap CSS --><link rel="stylesheet" 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+
+<title>Anime</title>  
 </head>  
 <body>   
+<style>
+    body{
+        font-size:15px;
+        font-weight:bold;
+    }
+</style>
 	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">SHOP SHOP</a>
+    <a class="navbar-brand" href="index.php?page=accueil">Anime</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
     
       <li class="nav-item">
-        <a class="nav-link" href="http://serveur1.arras-sio.com/symfony4-4149/shopshop/SI6/public/index.php?page=acceuil">Accueil <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php?page=acceuil">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+
+      {% if session.login is defined %}                
+      <li><a class="nav-link" href="index.php?page=deconnexion">Se déconnecter</a></li>              
+      {% else %}            
+      <li>
+      <a class="nav-link" href="index.php?page=connexion">Connexion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="http://serveur1.arras-sio.com/symfony4-4149/shopshop/SI6/public/index.php?page=inscription">S'inscrireeeeee</a>
+        <a class="nav-link" href="index.php?page=inscription">S'inscrire</a>
       </li>
+      {% endif %}              
+      {% if session.login is defined %}                
+      <li><a class="nav-link" href="#">{{session.login}}</a></li>             
+      {% endif %}
+
+      {% if session.role == 1 %}
       <li class="nav-item">
-        <a class="nav-link" href="http://serveur1.arras-sio.com/symfony4-4149/shopshop/SI6/public/index.php?page=connexion">Connexion</a>
+        <a class="nav-link" href="index.php?page=utilisateur">Utilisateur</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://serveur1.arras-sio.com/symfony4-4149/shopshop/SI6/public/index.php?page=produit">Produit</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://serveur1.arras-sio.com/symfony4-4149/shopshop/SI6/public/index.php?page=livre">Livre D'or</a>
-      </li>
+      {% endif %}
+
       
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Anime</a>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" href="index.php?page=listeanime">Liste des animé</a>
+
+    {% if session.role == 1 %}
+    <a class="dropdown-item" href="index.php?page=anime">Ajouter un animé</a>
+    {% endif %}
+
+    </div>
+  </li>
+
+    
+
+
+      <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Genre</a>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" href="index.php?page=listegenre">Liste des genre</a>
+
+    {% if session.role == 1 %}
+    <a class="dropdown-item" href="index.php?page=genre">Ajouter un genre</a>
+    {% endif %}
+
+    </div>
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Personnage</a>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" href="index.php?page=listeperso">Liste des personnage</a>
+
+    {% if session.role == 1 %}
+    <a class="dropdown-item" href="index.php?page=perso">Ajouter un personnage</a>
+    {% endif %}
+
+    </div>
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mangaka</a>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" href="index.php?page=listemangaka">Liste des mangaka</a>
+
+    {% if session.role == 1 %}
+    <a class="dropdown-item" href="index.php?page=mangaka">Ajouter un mangaka</a>
+    {% endif %}
+
+    </div>
+  </li>
+
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-    </form>
   </div>
 	</nav>
-  </div>
-  {% block contenu %} {% endblock %}
+
+  
+  
+ 
+{% block contenu %} 
+{% endblock %}

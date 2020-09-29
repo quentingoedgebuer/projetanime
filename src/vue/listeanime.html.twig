@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}} liste animé {% endblock %}
+
+
+
+{% block contenu %}
+<style>
+    body{
+        background:url(onepiece.png);
+    }
+    tr{
+        color:white;
+    }
+</style>
+
+<div class="table-responsive">
+ <table class="table">
+ <thead>
+ <tr>
+ <th scope="col">Nom anime</th>
+ <th scope="col">Mangaka</th>
+ <th scope="col">genre</th>
+ </tr>
+ </thead>
+ <tbody>
+ {% for a in liste %}
+
+<tr><td>{{a.nomanime}}</td><td>{{a.mangaka}}</td><td>{{a.genrelibelle}}</td></tr>
+ {% endfor %}
+ </tbody>
+ </table>
+ </div>
+
+{% endblock %}

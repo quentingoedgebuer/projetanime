@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}} Utilisateur {% endblock %}
+
+
+
+{% block contenu %}
+<style>
+    body{
+        background:url(kna.png);
+    }
+    tr{
+        color:black;
+        font-size:bold;
+    }
+
+</style>
+
+ <div class="table-responsive">
+ <table class="table">
+ <thead>
+ <tr>
+ <th scope="col">E-mail</th>
+ <th scope="col">Pseudo</th>
+ <th scope="col">Nom</th>
+ <th scope="col">Prénom</th>
+ <th scope="col">Role</th>
+ <th scope="col"></th>
+ </tr>
+ </thead>
+ <tbody>
+ {% for u in liste %}
+
+<tr><td>{{u.email}}</td><td>{{u.pseudo}}</td><td>{{u.nom}}</td><td>{{u.prenom}}</td><td>{{u.libellerole}}</td></tr>
+ {% endfor %}
+ </tbody>
+ </table>
+ </div>
+{% endblock %}

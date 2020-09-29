@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}} Anime {% endblock %}
+
+
+
+{% block contenu %}
+<style>
+    body{
+        background:url(madara1.png);
+        color:white;       
+
+    }
+    form{
+        padding-top:20px;
+    }
+</style>
+
+
+{% if form.valide is defined %}   
+{% if form.valide == true %}
+    <h1>Anime enregistrer</h1>       
+    <h1>Voici votre Anime : {{form.anime}}</h1>
+    <h1><a href="index.php?page=anime">Retourner sur la page Anime</a></h1>
+{% else %} 
+    <h1>Echec de l'inscription</h1>       
+    <h1>Erreur : {{form.message}}</h1>       
+    <h1><a href="index.php?page=anime">Retourner sur la page Anime</a></h1>    
+ {% endif %}  
+ {% else %} 
+
+
+    <center>
+            <form class="col-5" method="post" action="index.php?page=anime"> 
+        
+                <div class="form-group">
+                    <label for="nomAnime">Nom de l'anime</label>
+                    <input type="text" class="form-control" name="nomanime" >
+                </div>
+           
+
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select type="genre" id="genre" class="form-control" name="genre">
+                    {% for g in liste %}
+                    <option >{{g.id}}-{{g.libelle}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="idmangaka">Mangaka</label>
+                    <select type="idmangaka" id="idmangaka" class="form-control" name="idmangaka">
+                    {% for m in liste2 %}
+                    <option >{{m.id}}-{{m.nommangaka}} </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mx-auto" name="btAnime">Valider</button>
+            </form>
+            
+        </center>
+
+        {% endif %}
+
+{% endblock %}

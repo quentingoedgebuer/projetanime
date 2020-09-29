@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+{% block main %}
+Projet Anime -
+{% endblock %}
+
+{% block title %} {{parent()}} Connexion {% endblock %}
+
+{% block contenu %}
+
+<style>
+    body{
+        background:url(lemillion.png);
+        color:white;       
+
+    }
+    form{
+        padding-top:30px;
+    }
+</style>
+
+<center>
+            <form class="col-5" method="post" action="index.php?page=mangaka"> 
+        
+                <div class="form-group">
+                    <label for="nommangaka">mangaka</label>
+                    <input type="text" class="form-control" name="nommangaka">
+                </div>
+
+                <button type="submit" class="btn btn-primary mx-auto" name="btMangaka">Valider</button>
+            </form>
+            
+        </center>
+
+
+
+
+{% endblock %}
